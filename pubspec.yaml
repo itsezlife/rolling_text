@@ -14,9 +14,7 @@ topics:
   - text
   - counter
   - slot
-  - flip
   - number
-  - spring
 
 environment:
   sdk: ^3.11.1
