@@ -33,14 +33,14 @@ class RollingTextOptions {
     this.skipUnchanged = true,
     this.interrupt = true,
     this.fadeEdges = 0.0,
-  })  : assert(
-          bounce >= 0.0 && bounce <= 1.0,
-          'bounce must be between 0.0 and 1.0',
-        ),
-        assert(
-          fadeEdges >= 0.0 && fadeEdges <= 0.5,
-          'fadeEdges must be between 0.0 and 0.5',
-        );
+  }) : assert(
+         bounce >= 0.0 && bounce <= 1.0,
+         'bounce must be between 0.0 and 1.0',
+       ),
+       assert(
+         fadeEdges >= 0.0 && fadeEdges <= 0.5,
+         'fadeEdges must be between 0.0 and 0.5',
+       );
 
   /// The direction characters roll when transitioning.
   ///

@@ -123,8 +123,7 @@ class _RollingTextState extends State<RollingText> {
   // Helpers
   // ---------------------------------------------------------------------------
 
-  String _resolveText() =>
-      widget.controller?.value ?? widget.text ?? '';
+  String _resolveText() => widget.controller?.value ?? widget.text ?? '';
 
   void _onControllerChanged() {
     final String newText = widget.controller!.value;
@@ -150,9 +149,11 @@ class _RollingTextState extends State<RollingText> {
     final double durationMs = options.duration.inMilliseconds.toDouble();
     final double maxD = durationMs * (1.0 + options.bounce * 0.45);
     final double staggerMs = options.stagger.inMilliseconds.toDouble();
-    final double maxStagger = (maxLen - 1) * staggerMs * (1.0 + options.bounce * 0.25);
+    final double maxStagger =
+        (maxLen - 1) * staggerMs * (1.0 + options.bounce * 0.25);
 
-    final double totalMs = maxStagger +
+    final double totalMs =
+        maxStagger +
         options.exitOffset.inMilliseconds +
         maxD +
         (options.color != null ? options.colorFadeDuration.inMilliseconds : 0) +
@@ -180,7 +181,8 @@ class _RollingTextState extends State<RollingText> {
     final bool isTransitioning = _previousText != _currentText;
 
     // Check system animation status for Reduced Motion accessibility
-    final bool disableAnimations = widget.respectDisableAnimations &&
+    final bool disableAnimations =
+        widget.respectDisableAnimations &&
         MediaQuery.disableAnimationsOf(context);
 
     // Resolve waiting configurations from controller
@@ -201,7 +203,8 @@ class _RollingTextState extends State<RollingText> {
         shimmerColor = dynWaiting.color as Color?;
       } catch (_) {}
 
-      final Color highlight = shimmerColor ??
+      final Color highlight =
+          shimmerColor ??
           widget.style.color?.withValues(alpha: 0.5) ??
           const Color(0xFFFFD700); // Gold
 
@@ -241,7 +244,8 @@ class _RollingTextState extends State<RollingText> {
                 final dynamic dynWaiting = activeWaiting;
                 final Duration rest = dynWaiting.rest as Duration;
                 final Duration interval = dynWaiting.interval as Duration;
-                restSteps = (rest.inMilliseconds / interval.inMilliseconds).round();
+                restSteps = (rest.inMilliseconds / interval.inMilliseconds)
+                    .round();
               } catch (_) {}
 
               final int cycleLength = total + restSteps;
@@ -253,7 +257,8 @@ class _RollingTextState extends State<RollingText> {
               }
             }
 
-            final bool shouldAnimate = (isTransitioning || isWaveActive) &&
+            final bool shouldAnimate =
+                (isTransitioning || isWaveActive) &&
                 (!resolvedOptions.skipUnchanged ||
                     curr != prev ||
                     prev.isEmpty ||

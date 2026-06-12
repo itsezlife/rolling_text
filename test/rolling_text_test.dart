@@ -28,14 +28,8 @@ void main() {
     });
 
     test('bounce out of range throws assertion', () {
-      expect(
-        () => RollingTextOptions(bounce: 1.1),
-        throwsAssertionError,
-      );
-      expect(
-        () => RollingTextOptions(bounce: -0.1),
-        throwsAssertionError,
-      );
+      expect(() => RollingTextOptions(bounce: 1.1), throwsAssertionError);
+      expect(() => RollingTextOptions(bounce: -0.1), throwsAssertionError);
     });
   });
 
@@ -117,7 +111,10 @@ void main() {
     test('startWaiting ellipsis transitions and completes', () {
       fakeAsync((async) {
         final ctrl = RollingTextController(initial: 'Loading');
-        final handle = ctrl.startWaiting('Loading', waiting: const RollingWaiting.ellipsis());
+        final handle = ctrl.startWaiting(
+          'Loading',
+          waiting: const RollingWaiting.ellipsis(),
+        );
         expect(ctrl.value, 'Loading');
 
         async.elapse(const Duration(milliseconds: 450));
@@ -136,7 +133,11 @@ void main() {
     test('startProgress frames cycle and cancel', () {
       fakeAsync((async) {
         final ctrl = RollingTextController(initial: 'Sync');
-        final handle = ctrl.startProgress('Sync', frames: ['Sync 1', 'Sync 2', 'Sync 3'], interval: const Duration(milliseconds: 100));
+        final handle = ctrl.startProgress(
+          'Sync',
+          frames: ['Sync 1', 'Sync 2', 'Sync 3'],
+          interval: const Duration(milliseconds: 100),
+        );
         expect(ctrl.value, 'Sync');
 
         async.elapse(const Duration(milliseconds: 110));
@@ -163,10 +164,7 @@ void main() {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: RollingText(
-              text: 'Hello',
-              style: TextStyle(fontSize: 16),
-            ),
+            body: RollingText(text: 'Hello', style: TextStyle(fontSize: 16)),
           ),
         ),
       );
@@ -225,10 +223,7 @@ void main() {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: RollingText(
-              text: 'Hello',
-              style: TextStyle(fontSize: 16),
-            ),
+            body: RollingText(text: 'Hello', style: TextStyle(fontSize: 16)),
           ),
         ),
       );
@@ -313,10 +308,7 @@ void main() {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: RollingNumber(
-              value: -42,
-              style: TextStyle(fontSize: 32),
-            ),
+            body: RollingNumber(value: -42, style: TextStyle(fontSize: 32)),
           ),
         ),
       );
@@ -401,7 +393,9 @@ void main() {
       );
     });
 
-    testWidgets('thousandSeparator inserts commas between digit groups', (tester) async {
+    testWidgets('thousandSeparator inserts commas between digit groups', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -436,7 +430,9 @@ void main() {
       expect(find.text('3'), findsOneWidget);
     });
 
-    testWidgets('autoDirection false respects user-provided direction', (tester) async {
+    testWidgets('autoDirection false respects user-provided direction', (
+      tester,
+    ) async {
       int value = 5;
       late StateSetter setState;
 
@@ -449,7 +445,9 @@ void main() {
                 body: RollingNumber(
                   value: value,
                   autoDirection: false,
-                  options: const RollingTextOptions(direction: RollingDirection.down),
+                  options: const RollingTextOptions(
+                    direction: RollingDirection.down,
+                  ),
                   style: const TextStyle(fontSize: 32),
                 ),
               );

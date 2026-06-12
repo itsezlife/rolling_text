@@ -7,23 +7,16 @@ sealed class RollingWaiting {
 
   /// Cycles dots at the end of the text.
   /// E.g. "Loading" -> "Loading." -> "Loading.." -> "Loading..."
-  const factory RollingWaiting.ellipsis({
-    Duration interval,
-  }) = _Ellipsis;
+  const factory RollingWaiting.ellipsis({Duration interval}) = _Ellipsis;
 
   /// Wave effect that animates characters to themselves using spring physics.
   /// Staggers across the text from left to right.
-  const factory RollingWaiting.wave({
-    Duration interval,
-    Duration rest,
-  }) = _Wave;
+  const factory RollingWaiting.wave({Duration interval, Duration rest}) = _Wave;
 
   /// Shimmer effect that shifts a temporary color spotlight across the characters
   /// without rolling the text itself.
-  const factory RollingWaiting.shimmer({
-    Duration interval,
-    Color? color,
-  }) = _Shimmer;
+  const factory RollingWaiting.shimmer({Duration interval, Color? color}) =
+      _Shimmer;
 
   /// A completely custom waiting animation builder.
   /// Takes the base text and current tick, returning the text for that frame.
@@ -35,9 +28,7 @@ sealed class RollingWaiting {
 
 class _Ellipsis extends RollingWaiting {
   /// Creates an ellipsis waiting animation configuration.
-  const _Ellipsis({
-    this.interval = const Duration(milliseconds: 400),
-  });
+  const _Ellipsis({this.interval = const Duration(milliseconds: 400)});
 
   /// The duration of each animation step.
   final Duration interval;

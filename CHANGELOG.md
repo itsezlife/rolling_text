@@ -1,3 +1,7 @@
+## 0.1.2
+
+* Apply `dart format` to fix spacing and indentation issues and conform to pub.dev Dart file conventions.
+
 ## 0.1.1
 
 * Fix pub.dev markdown image rendering by migrating relative `doc/` paths to absolute GitHub raw URLs.

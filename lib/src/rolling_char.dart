@@ -114,7 +114,8 @@ class RollingChar extends StatefulWidget {
   State<RollingChar> createState() => RollingCharState();
 }
 
-class RollingCharState extends State<RollingChar> with TickerProviderStateMixin {
+class RollingCharState extends State<RollingChar>
+    with TickerProviderStateMixin {
   // ---------------------------------------------------------------------------
   // Controllers
   // ---------------------------------------------------------------------------
@@ -324,11 +325,19 @@ class RollingCharState extends State<RollingChar> with TickerProviderStateMixin 
     final bool isLead = _prevChar.isEmpty;
 
     final double durationMs = widget.options.duration.inMilliseconds.toDouble();
-    final double d = (durationMs * (isTail ? 0.75 : 1.0) * (1.0 + widget.options.bounce * 0.45 * wobbleSpeed)).roundToDouble();
+    final double d =
+        (durationMs *
+                (isTail ? 0.75 : 1.0) *
+                (1.0 + widget.options.bounce * 0.45 * wobbleSpeed))
+            .roundToDouble();
 
     final double staggerMs = widget.options.stagger.inMilliseconds.toDouble();
     final double staggerIndex = widget.charIndex.toDouble();
-    final double base = (staggerIndex * staggerMs * (1.0 + widget.options.bounce * 0.25 * wobbleStagger)).roundToDouble();
+    final double base =
+        (staggerIndex *
+                staggerMs *
+                (1.0 + widget.options.bounce * 0.25 * wobbleStagger))
+            .roundToDouble();
 
     // Stagger slide-out of existing char
     if (_prevChar.isNotEmpty) {
@@ -339,7 +348,8 @@ class RollingCharState extends State<RollingChar> with TickerProviderStateMixin 
     }
 
     // Stagger slide-in of entering char
-    final double enterDelay = base + widget.options.exitOffset.inMilliseconds.toDouble();
+    final double enterDelay =
+        base + widget.options.exitOffset.inMilliseconds.toDouble();
     _addTimer(Duration(milliseconds: enterDelay.toInt()), _runEnterSpring);
 
     // Calculate layout width transition delay & duration
@@ -453,15 +463,24 @@ class RollingCharState extends State<RollingChar> with TickerProviderStateMixin 
   @override
   Widget build(BuildContext context) {
     final TextStyle style = _renderStyle;
-    final double dirSign =
-        widget.options.direction == RollingDirection.down ? 1.0 : -1.0;
+    final double dirSign = widget.options.direction == RollingDirection.down
+        ? 1.0
+        : -1.0;
 
     return AnimatedBuilder(
-      animation: Listenable.merge([_exitCtrl, _enterCtrl, _colorCtrl, _widthCtrl]),
+      animation: Listenable.merge([
+        _exitCtrl,
+        _enterCtrl,
+        _colorCtrl,
+        _widthCtrl,
+      ]),
       builder: (BuildContext context, Widget? _) {
         final double targetSpacing = widget.isLast ? 0.0 : widget.spacing;
         final double currentSpacing = targetSpacing * _widthCurve.value;
-        final double currentWidth = _prevCellWidth + (_cellWidth - _prevCellWidth) * _widthCurve.value + currentSpacing;
+        final double currentWidth =
+            _prevCellWidth +
+            (_cellWidth - _prevCellWidth) * _widthCurve.value +
+            currentSpacing;
         final double exitY = _exitCtrl.value * widget.charHeight * dirSign;
         final double enterY = _enterCtrl.value * (-widget.charHeight * dirSign);
 

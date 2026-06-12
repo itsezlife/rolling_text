@@ -57,7 +57,10 @@ class RollingTextController extends ValueNotifier<String> {
   /// Temporarily transitions to [text], then rolls back after [revertAfter].
   ///
   /// Cancels any active waiting or progress loops before flashing.
-  void flash(String text, {Duration revertAfter = const Duration(milliseconds: 1400)}) {
+  void flash(
+    String text, {
+    Duration revertAfter = const Duration(milliseconds: 1400),
+  }) {
     _cancelWaiting();
     _flashOriginal ??= value;
     final String original = _flashOriginal!;
@@ -229,7 +232,8 @@ class RollingTextController extends ValueNotifier<String> {
       if (value != frame) value = frame;
     } else if (typeName.contains('Builder')) {
       final dynamic dynWaiting = waiting;
-      final String Function(String, int) builder = dynWaiting.builder as String Function(String, int);
+      final String Function(String, int) builder =
+          dynWaiting.builder as String Function(String, int);
       final String frame = builder(baseText, _animationTick);
       if (value != frame) value = frame;
     } else {

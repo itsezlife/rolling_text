@@ -11,17 +11,17 @@ import 'package:rolling_text/rolling_text.dart';
 
 const String _version = '0.1.0';
 
-const Color _bg           = Color(0xFF080C10);
-const Color _surface      = Color(0xFF0E1318);
-const Color _surfaceCode  = Color(0xFF070B0F); // darker well for code blocks
-const Color _border       = Color(0xFF1C2128);
-const Color _borderCode   = Color(0xFF151C24);
-const Color _textPrimary  = Color(0xFFE6EDF3);
+const Color _bg = Color(0xFF080C10);
+const Color _surface = Color(0xFF0E1318);
+const Color _surfaceCode = Color(0xFF070B0F); // darker well for code blocks
+const Color _border = Color(0xFF1C2128);
+const Color _borderCode = Color(0xFF151C24);
+const Color _textPrimary = Color(0xFFE6EDF3);
 const Color _textSecondary = Color(0xFF7D8590);
-const Color _textCode     = Color(0xFFA5D6FF); // light blue tint for code
-const Color _accent       = Color(0xFF38BDF8);
-const Color _green        = Color(0xFF3FB950);
-const Color _red          = Color(0xFFF85149);
+const Color _textCode = Color(0xFFA5D6FF); // light blue tint for code
+const Color _accent = Color(0xFF38BDF8);
+const Color _green = Color(0xFF3FB950);
+const Color _red = Color(0xFFF85149);
 
 // ---------------------------------------------------------------------------
 // Typography helpers
@@ -34,38 +34,38 @@ TextStyle _inter({
   double? letterSpacing,
   double? height,
 }) => GoogleFonts.inter(
-      fontSize: fontSize,
-      fontWeight: fontWeight,
-      color: color,
-      letterSpacing: letterSpacing,
-      height: height,
-    );
+  fontSize: fontSize,
+  fontWeight: fontWeight,
+  color: color,
+  letterSpacing: letterSpacing,
+  height: height,
+);
 
 TextStyle _mono({
   double fontSize = 12,
   Color color = _textCode,
   FontWeight fontWeight = FontWeight.w400,
 }) => GoogleFonts.jetBrainsMono(
-      fontSize: fontSize,
-      color: color,
-      fontWeight: fontWeight,
-    );
+  fontSize: fontSize,
+  color: color,
+  fontWeight: fontWeight,
+);
 
 // ---------------------------------------------------------------------------
 // Shape helpers
 // ---------------------------------------------------------------------------
 
 BoxDecoration _cardDecor() => BoxDecoration(
-      color: _surface,
-      borderRadius: BorderRadius.circular(16),
-      border: Border.all(color: _border),
-    );
+  color: _surface,
+  borderRadius: BorderRadius.circular(16),
+  border: Border.all(color: _border),
+);
 
 BoxDecoration _codeBlockDecor() => BoxDecoration(
-      color: _surfaceCode,
-      borderRadius: BorderRadius.circular(10),
-      border: Border.all(color: _borderCode),
-    );
+  color: _surfaceCode,
+  borderRadius: BorderRadius.circular(10),
+  border: Border.all(color: _borderCode),
+);
 
 // ---------------------------------------------------------------------------
 // App shell
@@ -278,7 +278,11 @@ class _PageHeader extends StatelessWidget {
           children: [
             Text(
               'rolling_text',
-              style: _mono(fontSize: 12, color: _accent, fontWeight: FontWeight.w600),
+              style: _mono(
+                fontSize: 12,
+                color: _accent,
+                fontWeight: FontWeight.w600,
+              ),
             ),
             const SizedBox(width: 8),
             Text(
@@ -376,10 +380,7 @@ class _DemoCardState extends State<_DemoCard> {
           ),
 
           // Divider before toggle button
-          Container(
-            height: 1,
-            color: _border,
-          ),
+          Container(height: 1, color: _border),
 
           // Toggle button row
           Material(
@@ -391,7 +392,10 @@ class _DemoCardState extends State<_DemoCard> {
                 });
               },
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 14,
+                ),
                 child: Row(
                   children: [
                     Icon(
@@ -408,7 +412,9 @@ class _DemoCardState extends State<_DemoCard> {
                         color: _expanded ? _textPrimary : _textSecondary,
                       ),
                       options: RollingTextOptions(
-                        direction: _expanded ? RollingDirection.up : RollingDirection.down,
+                        direction: _expanded
+                            ? RollingDirection.up
+                            : RollingDirection.down,
                         stagger: const Duration(milliseconds: 20),
                         bounce: 0.3,
                       ),
@@ -443,9 +449,7 @@ class _DemoCardState extends State<_DemoCard> {
                         bottomLeft: Radius.circular(16),
                         bottomRight: Radius.circular(16),
                       ),
-                      border: Border(
-                        top: BorderSide(color: _borderCode),
-                      ),
+                      border: Border(top: BorderSide(color: _borderCode)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -540,18 +544,23 @@ class _CopySnippetBtnState extends State<_CopySnippetBtn> {
         curve: Curves.easeInOut,
         tween: Tween<double>(begin: 0.0, end: isCopy ? 0.0 : 1.0),
         builder: (context, value, child) {
-          final bgColor = Color.lerp(Colors.transparent, _accent.withOpacity(0.1), value);
-          final borderColor = Color.lerp(_border, _accent.withOpacity(0.3), value);
+          final bgColor = Color.lerp(
+            Colors.transparent,
+            _accent.withOpacity(0.1),
+            value,
+          );
+          final borderColor = Color.lerp(
+            _border,
+            _accent.withOpacity(0.3),
+            value,
+          );
           final textColor = Color.lerp(_textSecondary, _accent, value);
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
               color: bgColor,
               borderRadius: BorderRadius.circular(6),
-              border: Border.all(
-                color: borderColor ?? _border,
-                width: 1,
-              ),
+              border: Border.all(color: borderColor ?? _border, width: 1),
             ),
             child: RollingText(
               controller: _ctrl,
@@ -599,7 +608,9 @@ class _CopyDemoState extends State<_CopyDemo> {
     if (mounted) {
       setState(() {
         // Roll UP when showing "Copied ✓" and roll DOWN when reverting back to "Copy"
-        _direction = _ctrl.value == 'Copy' ? RollingDirection.down : RollingDirection.up;
+        _direction = _ctrl.value == 'Copy'
+            ? RollingDirection.down
+            : RollingDirection.up;
       });
     }
   }
@@ -617,7 +628,10 @@ class _CopyDemoState extends State<_CopyDemo> {
     return GestureDetector(
       onTap: () {
         HapticFeedback.lightImpact();
-        _ctrl.flash('Copied ✓', revertAfter: const Duration(milliseconds: 1600));
+        _ctrl.flash(
+          'Copied ✓',
+          revertAfter: const Duration(milliseconds: 1600),
+        );
       },
       child: TweenAnimationBuilder<double>(
         duration: const Duration(milliseconds: 250),
@@ -732,9 +746,7 @@ class _NumberDemoState extends State<_NumberDemo> {
                   : Colors.white.withValues(alpha: 0.05),
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
-                color: _fadeEdges
-                    ? _accent.withValues(alpha: 0.55)
-                    : _border,
+                color: _fadeEdges ? _accent.withValues(alpha: 0.55) : _border,
                 width: 1,
               ),
             ),
@@ -744,9 +756,7 @@ class _NumberDemoState extends State<_NumberDemo> {
                 AnimatedSwitcher(
                   duration: const Duration(milliseconds: 180),
                   child: Icon(
-                    _fadeEdges
-                        ? Icons.blur_on_rounded
-                        : Icons.blur_off_rounded,
+                    _fadeEdges ? Icons.blur_on_rounded : Icons.blur_off_rounded,
                     key: ValueKey(_fadeEdges),
                     size: 14,
                     color: _fadeEdges ? _accent : _textSecondary,
@@ -803,7 +813,9 @@ class _CurrencyDemoState extends State<_CurrencyDemo> {
               icon: Icons.remove_rounded,
               onTap: () {
                 HapticFeedback.selectionClick();
-                setState(() => _balance = (_balance - 100).clamp(-9999.99, 9999.99));
+                setState(
+                  () => _balance = (_balance - 100).clamp(-9999.99, 9999.99),
+                );
               },
             ),
             Expanded(
@@ -827,7 +839,9 @@ class _CurrencyDemoState extends State<_CurrencyDemo> {
               icon: Icons.add_rounded,
               onTap: () {
                 HapticFeedback.selectionClick();
-                setState(() => _balance = (_balance + 100).clamp(-9999.99, 9999.99));
+                setState(
+                  () => _balance = (_balance + 100).clamp(-9999.99, 9999.99),
+                );
               },
             ),
           ],
@@ -981,7 +995,9 @@ class _StaggerDemoState extends State<_StaggerDemo> {
           onTap: () {
             HapticFeedback.lightImpact();
             setState(() {
-              _dir = _idx % 2 == 0 ? RollingDirection.up : RollingDirection.down;
+              _dir = _idx % 2 == 0
+                  ? RollingDirection.up
+                  : RollingDirection.down;
               _idx = (_idx + 1) % _labels.length;
             });
           },
@@ -1108,17 +1124,19 @@ class _WaitingDemoState extends State<_WaitingDemo> {
   }
 
   void _complete() {
-    _handle?.complete('Success ✓', options: RollingTextOptions(
-      color: chromatic(from: 100, spread: 80),
-    ));
+    _handle?.complete(
+      'Success ✓',
+      options: RollingTextOptions(color: chromatic(from: 100, spread: 80)),
+    );
     _handle = null;
     setState(() => _mode = 'idle');
   }
 
   void _fail() {
-    _handle?.fail('Failed ✗', options: RollingTextOptions(
-      color: chromatic(from: 0, spread: 20),
-    ));
+    _handle?.fail(
+      'Failed ✗',
+      options: RollingTextOptions(color: chromatic(from: 0, spread: 20)),
+    );
     _handle = null;
     setState(() => _mode = 'idle');
   }

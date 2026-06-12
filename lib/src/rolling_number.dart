@@ -78,7 +78,9 @@ class _RollingNumberState extends State<RollingNumber> {
   void initState() {
     super.initState();
     _previousValue = widget.value;
-    _direction = widget.value >= 0 ? RollingDirection.up : RollingDirection.down;
+    _direction = widget.value >= 0
+        ? RollingDirection.up
+        : RollingDirection.down;
   }
 
   @override
@@ -136,7 +138,8 @@ class _RollingNumberState extends State<RollingNumber> {
 
   @override
   Widget build(BuildContext context) {
-    final RollingTextOptions baseOptions = widget.options ??
+    final RollingTextOptions baseOptions =
+        widget.options ??
         const RollingTextOptions(
           stagger: Duration(milliseconds: 30),
           duration: Duration(milliseconds: 280),
@@ -168,20 +171,10 @@ class _RollingNumberState extends State<RollingNumber> {
       crossAxisAlignment: CrossAxisAlignment.baseline,
       textBaseline: TextBaseline.alphabetic,
       children: [
-        RollingText(
-          text: _sign(),
-          style: numberStyle,
-          options: signOptions,
-        ),
-        if (widget.prefix != null)
-          Text(widget.prefix!, style: widget.style),
-        RollingText(
-          text: _format(),
-          style: numberStyle,
-          options: resolved,
-        ),
-        if (widget.suffix != null)
-          Text(widget.suffix!, style: widget.style),
+        RollingText(text: _sign(), style: numberStyle, options: signOptions),
+        if (widget.prefix != null) Text(widget.prefix!, style: widget.style),
+        RollingText(text: _format(), style: numberStyle, options: resolved),
+        if (widget.suffix != null) Text(widget.suffix!, style: widget.style),
       ],
     );
   }

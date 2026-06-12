@@ -4,12 +4,13 @@ import 'rolling_text_options.dart';
 class RollingWaitingHandle {
   /// Creates a handle with the given callbacks.
   RollingWaitingHandle({
-    required void Function(String text, {RollingTextOptions? options}) onComplete,
+    required void Function(String text, {RollingTextOptions? options})
+    onComplete,
     required void Function(String text, {RollingTextOptions? options}) onFail,
     required void Function() onCancel,
-  })  : _onComplete = onComplete,
-        _onFail = onFail,
-        _onCancel = onCancel;
+  }) : _onComplete = onComplete,
+       _onFail = onFail,
+       _onCancel = onCancel;
 
   final void Function(String text, {RollingTextOptions? options}) _onComplete;
   final void Function(String text, {RollingTextOptions? options}) _onFail;
