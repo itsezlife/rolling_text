@@ -1,3 +1,7 @@
+## 0.1.3
+
+* Shorten the pubspec description to meet the pub.dev 180 characters limit.
+
 ## 0.1.2
 
 * Apply `dart format` to fix spacing and indentation issues and conform to pub.dev Dart file conventions.
