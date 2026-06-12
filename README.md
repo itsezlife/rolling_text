@@ -4,33 +4,36 @@
 [![pub points](https://img.shields.io/pub/points/rolling_text)](https://pub.dev/packages/rolling_text/score)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-![rolling_text showcase](docs/showcase.gif)
+![rolling_text showcase](doc/showcase.gif)
 
----
-
-**Spring-physics slot animation for any Flutter text.**
-
-Each character rolls through a clipped vertical cell with real spring physics —
-old glyph exits, new one springs in with a subtle bounce. Works on **numbers,
-labels, status strings, CTAs, countdowns** — any text that changes.
+A premium, high-performance Flutter widget for creating butter-smooth, vertical rolling character and number transitions. Built with precision spring physics, dynamic layout resizing, accessibility support, and customizable presets for waiting/progress loops.
 
 ---
 
 ## Features
 
-- Animates **any string** — not just numbers
-- Real **spring physics** per character (mass, stiffness, damping)
-- Per-character **stagger** and spring **personality variance** (`bounce`)
-- **Direction-aware** number rolling — auto ↑/↓ from value delta
-- **Width transitions** — length changes animate per slot
-- **Chromatic** tints during roll-in + **resting color** per character
-- **Odometer fade edges** (`fadeEdges`) for slot-machine depth
-- Programmatic **controller** with `set()` / `flash()` (spam-safe auto-revert)
-- **Waiting & Progress** loops (`ellipsis`, `wave`, `shimmer`, `builder`, `frames`)
-- **Reduced Motion** accessibility (`respectDisableAnimations`)
-- `RollingNumber` with `prefix`, `suffix`, `thousandSeparator`, `decimalSeparator`
-- `skipUnchanged` — only animates characters that actually changed
-- Zero dependencies
+- ⚡ **Butter-Smooth Animations**: Fully customizable spring dynamics and stagger effects per character.
+- 🔢 **Smart Numeric Support**: Automatic grouping separators (thousands, decimals), fixed precision, and prefix/suffix decorators.
+- 🔄 **Async Waiting & Progress Loops**: Built-in loaders (Ellipsis, Wave, Shimmer, or custom builder loops) out of the box.
+- 🎨 **Chromatic Rainbow Styling**: Inline gradient text layout and single-char styling.
+- ♿ **Reduced Motion Support**: Automatically respects system-level accessibility animation settings.
+- 🪶 **Zero Dependencies**: Lightweight and built natively using the Flutter animation framework.
+
+---
+
+## Showcases
+
+### Numeric Transition with Decimals
+![decimals and prefix demo](doc/decimals.gif)
+
+### Chromatic Styling
+![chromatic rainbow demo](doc/chromatic.gif)
+
+### Dynamic Stagger & Directions
+![stagger and direction demo](doc/next.gif)
+
+### Async Waiting & Progress Loops
+![waiting and progress loops demo](doc/start.gif)
 
 ---
 
@@ -55,6 +58,8 @@ RollingText(
 The `RollingNumber` widget automatically rolls **up** when the value increases
 and **down** when it decreases — no manual wiring needed.
 
+![number roll demo](doc/number_roll.gif)
+
 ```dart
 RollingNumber(
   value: _score,             // int or double
@@ -63,6 +68,8 @@ RollingNumber(
 ```
 
 With decimal precision, prefix and suffix:
+
+![decimals and prefix demo](doc/decimals.gif)
 
 ```dart
 RollingNumber(
@@ -149,8 +156,6 @@ RollingNumber(
 )
 ```
 
-![decimals and prefix demo](docs/decimals.gif)
-
 ### Programmatic controller
 
 ```dart
@@ -164,6 +169,8 @@ ctrl.flash('Copied ✓');     // rolls back after 1.4 s, spam-safe
 ctrl.flash('Saved ✓', revertAfter: Duration(seconds: 2));
 ctrl.set('Saved');           // permanent, cancels any pending revert
 ```
+
+![copy flash demo](doc/flash.gif)
 
 ### Chromatic rainbow
 
@@ -192,7 +199,7 @@ RollingTextOptions(
 )
 ```
 
-![chromatic rainbow demo](docs/chromatic.gif)
+![chromatic rainbow demo](doc/chromatic.gif)
 
 You can pass any `Color Function(int index, int total)` to `color` or
 `restingColor` — `chromatic()` is just a convenience helper.
@@ -216,7 +223,7 @@ RollingText(
 )
 ```
 
-![stagger and direction demo](docs/next.gif)
+![stagger and direction demo](doc/next.gif)
 
 ---
 
@@ -224,7 +231,7 @@ RollingText(
 
 Use the controller to trigger asynchronous status loops (like network loaders, file saves, or download trackers).
 
-![waiting and progress loops demo](docs/start.gif)
+![waiting and progress loops demo](doc/start.gif)
 
 ```dart
 final ctrl = RollingTextController(initial: 'Idle');
