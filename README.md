@@ -4,7 +4,7 @@
 [![pub points](https://img.shields.io/pub/points/rolling_text)](https://pub.dev/packages/rolling_text/score)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-![rolling_text showcase](doc/showcase.gif)
+![rolling_text showcase](https://raw.githubusercontent.com/lportals/rolling_text/main/doc/showcase.gif)
 
 A premium, high-performance Flutter widget for creating butter-smooth, vertical rolling character and number transitions. Built with precision spring physics, dynamic layout resizing, accessibility support, and customizable presets for waiting/progress loops.
 
@@ -24,16 +24,16 @@ A premium, high-performance Flutter widget for creating butter-smooth, vertical 
 ## Showcases
 
 ### Numeric Transition with Decimals
-![decimals and prefix demo](doc/decimals.gif)
+![decimals and prefix demo](https://raw.githubusercontent.com/lportals/rolling_text/main/doc/decimals.gif)
 
 ### Chromatic Styling
-![chromatic rainbow demo](doc/chromatic.gif)
+![chromatic rainbow demo](https://raw.githubusercontent.com/lportals/rolling_text/main/doc/chromatic.gif)
 
 ### Dynamic Stagger & Directions
-![stagger and direction demo](doc/next.gif)
+![stagger and direction demo](https://raw.githubusercontent.com/lportals/rolling_text/main/doc/next.gif)
 
 ### Async Waiting & Progress Loops
-![waiting and progress loops demo](doc/start.gif)
+![waiting and progress loops demo](https://raw.githubusercontent.com/lportals/rolling_text/main/doc/start.gif)
 
 ---
 
@@ -58,7 +58,7 @@ RollingText(
 The `RollingNumber` widget automatically rolls **up** when the value increases
 and **down** when it decreases — no manual wiring needed.
 
-![number roll demo](doc/number_roll.gif)
+![number roll demo](https://raw.githubusercontent.com/lportals/rolling_text/main/doc/number_roll.gif)
 
 ```dart
 RollingNumber(
@@ -69,7 +69,7 @@ RollingNumber(
 
 With decimal precision, prefix and suffix:
 
-![decimals and prefix demo](doc/decimals.gif)
+![decimals and prefix demo](https://raw.githubusercontent.com/lportals/rolling_text/main/doc/decimals.gif)
 
 ```dart
 RollingNumber(
@@ -170,7 +170,7 @@ ctrl.flash('Saved ✓', revertAfter: Duration(seconds: 2));
 ctrl.set('Saved');           // permanent, cancels any pending revert
 ```
 
-![copy flash demo](doc/flash.gif)
+![copy flash demo](https://raw.githubusercontent.com/lportals/rolling_text/main/doc/flash.gif)
 
 ### Chromatic rainbow
 
@@ -199,7 +199,7 @@ RollingTextOptions(
 )
 ```
 
-![chromatic rainbow demo](doc/chromatic.gif)
+![chromatic rainbow demo](https://raw.githubusercontent.com/lportals/rolling_text/main/doc/chromatic.gif)
 
 You can pass any `Color Function(int index, int total)` to `color` or
 `restingColor` — `chromatic()` is just a convenience helper.
@@ -223,7 +223,7 @@ RollingText(
 )
 ```
 
-![stagger and direction demo](doc/next.gif)
+![stagger and direction demo](https://raw.githubusercontent.com/lportals/rolling_text/main/doc/next.gif)
 
 ---
 
@@ -231,7 +231,7 @@ RollingText(
 
 Use the controller to trigger asynchronous status loops (like network loaders, file saves, or download trackers).
 
-![waiting and progress loops demo](doc/start.gif)
+![waiting and progress loops demo](https://raw.githubusercontent.com/lportals/rolling_text/main/doc/start.gif)
 
 ```dart
 final ctrl = RollingTextController(initial: 'Idle');

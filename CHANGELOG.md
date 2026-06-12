@@ -1,3 +1,7 @@
+## 0.1.1
+
+* Fix pub.dev markdown image rendering by migrating relative `doc/` paths to absolute GitHub raw URLs.
+
 ## 0.1.0
 
 - Initial release of `rolling_text`.
