@@ -1,0 +1,36 @@
+name: rolling_text
+description: >
+  Per-character vertical rolling text animation for Flutter. Spring physics, stagger,
+  direction-aware number rolling, chromatic color tints, and a programmatic
+  controller API. Works with any string — not just numbers.
+version: 0.1.0
+
+homepage: https://luisportal.com/labs
+repository: https://github.com/lportals/rolling_text
+issue_tracker: https://github.com/lportals/rolling_text/issues
+
+topics:
+  - animation
+  - text
+  - counter
+  - slot
+  - flip
+  - number
+  - spring
+
+environment:
+  sdk: ^3.11.1
+  flutter: ">=3.29.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  fake_async: ^1.3.0
+
+flutter:
+  uses-material-design: false

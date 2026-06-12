@@ -1,0 +1,26 @@
+# Dart/Flutter
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec.lock
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# macOS
+.DS_Store
+
+# Example app build artifacts
+example/.dart_tool/
+example/build/
+example/ios/
+example/android/
+example/web/
+example/macos/
+example/linux/
+example/windows/
+example/pubspec.lock
