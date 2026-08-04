@@ -16,7 +16,7 @@ topics:
   - number
 
 environment:
-  sdk: ^3.11.1
+  sdk: ">=3.11.0"
   flutter: ">=3.29.0"
 
 dependencies:
